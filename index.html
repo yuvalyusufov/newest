@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>Hello, world!</title>
+  </head>
+
+  <style>
+    li {
+      cursor: pointer;
+    }
+
+    p {
+      padding: 0.5em;
+    }
+
+    /* p[contenteditable="true"] {
+      border: 1px red solid;
+    }
+
+    p[contenteditable="true"]:hover {
+      border: 1px blue solid;
+      opacity: 0.7;
+    } */
+    [contenteditable="true"]:active,
+    [contenteditable="true"]:focus {
+      border: 1px grey solid;
+      outline: none;
+    }
+  </style>
+
+  <body>
+    <ol id="takanon_list"></ol>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        addItem("yuval", 1);
+        addItem("adi", 2);
+        addItem("dana", 3);
+
+        $("#takanon_list").on("dblclick", function (e) {
+          $("#takanon_list li").attr("contenteditable", false);
+          console.log(e.target);
+
+          e.target.contentEditable = true;
+          //   e.target
+          //   $(e.target.id).contents().find("p").attr(contentEditable, true);
+
+          //   $("#p1").attr("contentEditable", true);
+        });
+
+        $("#takanon_list").on("mousedown", function () {
+          $("#takanon_list").sortable();
+        });
+
+        $("#takanon_list").on("click", function () {
+          $("#takanon_list").sortable("destroy");
+        });
+      });
+
+      const addItem = function (name, id) {
+        $("#takanon_list").append(
+          `<li id='tak${id}'><p id='p${id}'>${name}</p></li>`
+        );
+      };
+    </script>
+  </body>
+</html>
